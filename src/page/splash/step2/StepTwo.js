@@ -12,7 +12,7 @@ class StepTwo extends Component {
     this.props.navigation.navigate('StepOne');
   }
   goLogin(){
-    this.props.navigation.replace('Login')
+    this.props.navigation.replace('Home')
   }
   render() {
     return (
@@ -23,7 +23,7 @@ class StepTwo extends Component {
           </View>
           <View style={styles.thView}>
             <View style={{flex: 1}}>
-              <Text style={styles.contentText}>سلام</Text>
+              <Text style={styles.contentText}>خوبی</Text>
             </View>
             <View style={styles.buttonView}>
               <View

@@ -36,3 +36,12 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 }
+ext {
+    compileSdkVersion   = 28
+    targetSdkVersion    = 28
+    buildToolsVersion   = "28.0.1"
+    minSdkVersion       = 16
+    supportLibVersion   = "28.0.1"
+    playServicesVersion = "16.1.0" // or set latest version
+    androidMapsUtilsVersion = "0.5+"
+}
