@@ -44,7 +44,9 @@ const MainDrawer = createDrawerNavigator(
     contentComponent: MyDrawer,
     drawerBackgroundColor: 'red',
     drawerPosition: 'right',
-    hideStatusBar:true
+    hideStatusBar:true,
+    overlayColor:2,
+    drawerWidth:400,
   },
 );
 export default createAppContainer(MainDrawer);

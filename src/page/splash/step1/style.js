@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#00E676',
+    backgroundColor: '#263238',
   },
   secondView: {
     flex: 1,
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     margin: 20,
     borderRadius: 10,
-    backgroundColor: 'tomato',
+    backgroundColor: '#78909C',
     elevation: 5,
   },
   titleView: {
@@ -18,16 +18,18 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: 2,
     margin: 10,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     borderRadius: 20,
-    backgroundColor: '#A5D6A7',
+    backgroundColor: '#455A64',
     elevation: 5,
+    flexDirection:'row'
   },
   titleText: {
     fontFamily: 'IRANSansMobile_Bold',
     fontSize: 18,
     margin: 20,
+    color:'#DCEDC8'
   },
   thView: {
     flex: 0.9,
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin: 15,
     borderRadius: 20,
-    backgroundColor: '#A5D6A7',
+    backgroundColor: '#455A64',
   },
   contentText: {
     fontFamily: 'IRANSansMobile_Light',

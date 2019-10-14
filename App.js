@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View,StatusBar} from 'react-native';
 import MainDrawer from './src/page/Configuration'
 export class App extends Component {
   render() {
-    return <MainDrawer />;
+    return (<MainDrawer />
+    );
   }
 }
 

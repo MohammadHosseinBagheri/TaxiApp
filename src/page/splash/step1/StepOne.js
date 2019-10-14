@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image,StatusBar} from 'react-native';
 import {Button, Icon} from 'native-base';
+import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
 import LottieView from 'lottie-react-native';
 import styles from './style';
+import MyHeader from '../../../components/myheader/MyHeader';
 class StepOne extends Component {
   constructor(props) {
     super(props);
@@ -17,9 +19,14 @@ class StepOne extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <StatusBar hidden />
+      <MyHeader right={<Icon name='menu' onPress={()=>this.props.navigation.toggleDrawer()} />} />
         <View style={styles.secondView}>
           <View style={styles.titleView}>
-            <Text style={styles.titleText}>دیگه نمی خواد عجله کنی</Text>
+            <Image source={require('../../../../assets/img/car-150x150.png')} />
+            <AwesomeButtonRick type='myTheme' >
+              <Text style={styles.titleText}>دیگه نمی خواد عجله کنی</Text>
+            </AwesomeButtonRick>
           </View>
           <View style={styles.thView}>
             <View style={{flex: 0.5}}>
