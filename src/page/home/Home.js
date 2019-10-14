@@ -6,7 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
   StatusBar,
-  Image
+  Image,
 } from 'react-native';
 
 import MapView, {Marker, ProviderPropType} from 'react-native-maps';
@@ -15,7 +15,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import getDistance from 'geolib/es/getDistance';
 import {convertDistance} from 'geolib';
 import MyHeader from '../../components/myheader/MyHeader';
-import { Icon } from 'native-base';
+import {Icon} from 'native-base';
 
 const {width, height} = Dimensions.get('window');
 
@@ -113,8 +113,17 @@ class DefaultMarkers extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <StatusBar hidden/>
-      <MyHeader right={<Icon name='menu' onPress={()=>this.props.navigation.toggleDrawer()} />} />
+        <StatusBar hidden />
+        <MyHeader
+          right={
+            <Icon
+              name="menu"
+              onPress={() => this.props.navigation.toggleDrawer()}
+            />
+          }
+          body={<Text>تاکسی آنلاین</Text>}
+          left={<Image source={require('../../../assets/img/taxi50x50.png')} />}
+        />
         <MapView
           style={styles.map}
           region={{
@@ -127,9 +136,9 @@ class DefaultMarkers extends React.Component {
           <Marker
             icon={require('../../../assets/img/currentlocation40x40.png')}
             coordinate={this.state}
-            title={'اینجا هستم'}
+            title={'اینجا هستم'} 
           />
-          
+
           {this.state.markers.map(marker => (
             <Marker
               icon={
@@ -143,13 +152,6 @@ class DefaultMarkers extends React.Component {
               title={marker.key == 0 ? 'مبدا' : 'مقصد'}
             />
           ))}
-          {/* <MapViewDirections
-            origin={{latitude: this.state.maghsadLat, longitude: this.state.mabdaLgn}}
-            destination={{latitude: this.state.maghsadLat, longitude: this.state.maghsadLgn}}
-            apikey={'AIzaSyDdtsmgJRLjB7ryjeq-UD1kKrDtu6IuS7w'}
-            strokeWidth={3}
-            strokeColor="hotpink"
-          /> */}
         </MapView>
       </View>
     );
@@ -162,10 +164,11 @@ DefaultMarkers.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1
+    flex: 1,
   },
   map: {
-    width:'100%',height:'88%'
+    width: '100%',
+    height: '88%',
   },
   bubble: {
     backgroundColor: 'rgba(255,255,255,0.7)',
