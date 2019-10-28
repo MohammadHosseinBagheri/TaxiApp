@@ -120,8 +120,7 @@ class DefaultMarkers extends React.Component {
           right={
             <Icon
               name="menu"
-              // onPress={() => this.props.navigation.toggleDrawer()}
-              onPress={this.openModal.bind(this)}
+              onPress={() => this.props.navigation.toggleDrawer()}
             />
           }
           body={<Text>تاکسی آنلاین</Text>}
@@ -156,7 +155,7 @@ class DefaultMarkers extends React.Component {
             />
           ))}
         </MapView>
-        <View style={{backgroundColor:'#80CBC4',flex:1,flexDirection:'column'}}>
+        <View style={{backgroundColor:'#80CBC4',flex:1,flexDirection:'column',margin:10,borderRadius:15}}>
           <View
             style={{
               flex: 1,
@@ -174,7 +173,7 @@ class DefaultMarkers extends React.Component {
                 display: this.state.money != 0 ? 'flex' : 'none',
                 backgroundColor: 'tomato',
                 width: 150,
-                margin: 7,
+                margin: 15,
                 borderRadius: 15,
                 elevation: 10,
               }}>
@@ -195,6 +194,7 @@ DefaultMarkers.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'white'
   },
   map: {
     width: '100%',

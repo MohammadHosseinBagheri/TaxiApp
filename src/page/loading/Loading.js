@@ -10,8 +10,8 @@ class Loading extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      this.props.navigation.replace('StepOne');
-    }, 4000);
+      this.props.navigation.replace('Login');
+    }, 500);
   }
   render() {
     return (
