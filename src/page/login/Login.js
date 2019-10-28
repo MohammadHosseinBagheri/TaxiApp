@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image,StatusBar} from 'react-native';
 import {Icon, Item, Input, Button} from 'native-base';
 
 class Login extends Component {
@@ -11,6 +11,7 @@ class Login extends Component {
   render() {
     return (
       <View>
+      <StatusBar hidden />
         <View
           style={{
             flexDirection: 'column',
@@ -37,6 +38,7 @@ class Login extends Component {
               margin: 10,
               alignItems: 'center',
               justifyContent: 'center',
+              backgroundColor:'#81C784'
             }}
             onPress={() => this.props.navigation.replace('Home')}>
             <Text>ورود</Text>
@@ -52,7 +54,7 @@ class Login extends Component {
               style={{marginLeft: 5}}
               transparent
               onPress={() => this.props.navigation.navigate('Register')}>
-              <Text style={{color: 'green'}}>ثبت نام کنید</Text>
+              <Text style={{color: 'tomato'}}>ثبت نام کنید</Text>
             </Button>
           </View>
         </View>

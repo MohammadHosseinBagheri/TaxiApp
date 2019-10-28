@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text,StatusBar} from 'react-native';
 import LottieView from 'lottie-react-native';
 import styles from './style';
 import {Button} from 'native-base';
@@ -16,6 +16,7 @@ class Loading extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <StatusBar hidden />
         <LottieView source={require('../../animations/taxi.json')} autoPlay />
         <View style={styles.textView}>
           <Text style={styles.text}> تاکسی آنلاین </Text>
