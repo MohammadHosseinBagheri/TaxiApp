@@ -4,18 +4,17 @@ import {
   View,
   Text,
   Dimensions,
-  TouchableOpacity,
   StatusBar,
   Image,
 } from 'react-native';
 
 import MapView, {Marker, ProviderPropType} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import MapViewDirections from 'react-native-maps-directions';
 import getDistance from 'geolib/es/getDistance';
 import {convertDistance} from 'geolib';
 import MyHeader from '../../components/myheader/MyHeader';
-import {Icon} from 'native-base';
+import {Icon, Button} from 'native-base';
+import HomeModal from '../../components/homeModalBox/HomeModal';
 
 const {width, height} = Dimensions.get('window');
 
@@ -52,7 +51,9 @@ class DefaultMarkers extends React.Component {
       maghsadLgn: 0,
     };
   }
-
+  openModal() {
+    this.refs.myModal.modalOpen();
+  }
   componentDidMount() {
     Geolocation.getCurrentPosition(
       possition => {
@@ -65,8 +66,9 @@ class DefaultMarkers extends React.Component {
         });
       },
       error => console.log(error),
-      {enableHighAccuracy: true, timeout: 20000},
+      {enableHighAccuracy: true, timeout: 200000},
     );
+    this.openModal();
   }
 
   async onMapPress(e) {
@@ -108,7 +110,7 @@ class DefaultMarkers extends React.Component {
     }
   }
   calculateMoney(distance) {
-    return Math.round(distance) * 2000;
+    return Math.round(distance) * 2500;
   }
   render() {
     return (
@@ -118,7 +120,8 @@ class DefaultMarkers extends React.Component {
           right={
             <Icon
               name="menu"
-              onPress={() => this.props.navigation.toggleDrawer()}
+              // onPress={() => this.props.navigation.toggleDrawer()}
+              onPress={this.openModal.bind(this)}
             />
           }
           body={<Text>تاکسی آنلاین</Text>}
@@ -132,11 +135,11 @@ class DefaultMarkers extends React.Component {
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121,
           }}
-          onPress={e => this.onMapPress(e)}>
+          onPress={this.onMapPress.bind(this)}>
           <Marker
             icon={require('../../../assets/img/currentlocation40x40.png')}
             coordinate={this.state}
-            title={'اینجا هستم'} 
+            title={'اینجا هستم'}
           />
 
           {this.state.markers.map(marker => (
@@ -153,6 +156,33 @@ class DefaultMarkers extends React.Component {
             />
           ))}
         </MapView>
+        <View style={{backgroundColor:'#80CBC4',flex:1,flexDirection:'column'}}>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              flexDirection: 'row',
+              margin:10
+            }}>
+            <Text>هزینه سفر : </Text>
+            <Text>{this.state.money} تومان</Text>
+          </View>
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <Button
+              style={{
+                justifyContent: 'center',
+                display: this.state.money != 0 ? 'flex' : 'none',
+                backgroundColor: 'tomato',
+                width: 150,
+                margin: 7,
+                borderRadius: 15,
+                elevation: 10,
+              }}>
+              <Text>درخواست سرویس</Text>
+            </Button>
+          </View>
+        </View>
+        <HomeModal ref={'myModal'} />
       </View>
     );
   }
@@ -168,7 +198,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: '88%',
+    height: '85%',
   },
   bubble: {
     backgroundColor: 'rgba(255,255,255,0.7)',
