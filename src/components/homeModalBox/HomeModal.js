@@ -37,28 +37,28 @@ class HomeModal extends Component {
             />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text>چجوری ماشین بگیرم ؟!</Text>
+            <Text style={{fontFamily:'IRANSansMobile_Light',color:'#00E676',fontSize:18}}>چجوری ماشین بگیرم ؟!</Text>
           </View>
           <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
             <Image
               style={{width: 50, height: 50}}
               source={require('../../../assets/img/currentLocation.png')}
             />
-            <Text>مکان فعلی من</Text>
+            <Text style={{fontFamily:'IRANSansMobile'}}>مکان فعلی من</Text>
           </View>
           <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
             <Image
               style={{width: 50, height: 50}}
               source={require('../../../assets/img/mabda40x40.png')}
             />
-            <Text> مبدا من</Text>
+            <Text style={{fontFamily:'IRANSansMobile',color:'red',}}> مبدا من</Text>
           </View>
           <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
             <Image
               style={{width: 50, height: 50}}
               source={require('../../../assets/img/maghsad40x40.png')}
             />
-            <Text> مقصد من</Text>
+            <Text style={{fontFamily:'IRANSansMobile_Light',color:'#0091EA'}}> مقصد من</Text>
           </View>
           <View
             style={{
@@ -67,18 +67,19 @@ class HomeModal extends Component {
               alignItems: 'center',
               flexDirection: 'column',
             }}>
-            <Text>برای درخواست سرویس مبدا و مقصد را روی نقشه مشخص کنید</Text>
+            <Text style={{fontFamily:'IRANSansMobile_Bold',color:'red'}} >برای درخواست سرویس مبدا و مقصد را روی نقشه مشخص کنید</Text>
             <Button
               style={{
-                marginBottom: 10,
-                backgroundColor: '#26A69A',
-                width: 70,
+                marginBottom: 20,
+                backgroundColor: '#00C853',
+                width: 100,
                 justifyContent: 'center',
+                borderRadius:15
               }}
               onPress={() => {
                 this.refs.myModal.close();
               }}>
-              <Text style={{textAlign: 'center'}}>درخواست</Text>
+              <Text style={{textAlign: 'center',color:'white',fontFamily:'IRANSansMobile'}}>درخواست</Text>
             </Button>
           </View>
         </View>

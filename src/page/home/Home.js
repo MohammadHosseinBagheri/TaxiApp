@@ -119,12 +119,28 @@ class DefaultMarkers extends React.Component {
         <MyHeader
           right={
             <Icon
+              style={{color: 'white'}}
               name="menu"
-              onPress={() => this.props.navigation.toggleDrawer()}
+              onPress={()=>this.props.navigation.toggleDrawer()}
             />
           }
-          body={<Text>تاکسی آنلاین</Text>}
-          left={<Image source={require('../../../assets/img/taxi50x50.png')} />}
+          body={
+            <Text
+              style={{
+                fontFamily: 'IRANSansMobile',
+                color: 'white',
+                fontSize: 15,
+              }}>
+              تاکسی آنلاین
+            </Text>
+          }
+          left={
+            <Text
+              style={{color: 'white', fontFamily: 'IRANSansMobile'}}
+              onPress={this.openModal.bind(this)}>
+              راهنما
+            </Text>
+          }
         />
         <MapView
           style={styles.map}
@@ -155,16 +171,23 @@ class DefaultMarkers extends React.Component {
             />
           ))}
         </MapView>
-        <View style={{backgroundColor:'#80CBC4',flex:1,flexDirection:'column',margin:10,borderRadius:15}}>
+        <View
+          style={{
+            backgroundColor: '#80CBC4',
+            flex: 1,
+            flexDirection: 'column',
+            margin: 10,
+            borderRadius: 15,
+          }}>
           <View
             style={{
               flex: 1,
-              alignItems: 'center',
               flexDirection: 'row',
-              margin:10
+              alignItems:'center'
             }}>
-            <Text>هزینه سفر : </Text>
-            <Text>{this.state.money} تومان</Text>
+            <Icon name="cash" style={{marginTop:'5%',marginLeft:10}} />
+            <Text style={{fontFamily:'IRANSansMobile',marginLeft:5,marginTop:'5%'}}>هزینه سفر  </Text>
+            {this.state.money!=0?<Text style={{fontFamily:'IRANSansMobile_Light',marginTop:'5%'}}>{this.state.money} تومان</Text>:null}
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <Button
@@ -194,7 +217,7 @@ DefaultMarkers.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white'
+    backgroundColor: 'white',
   },
   map: {
     width: '100%',
