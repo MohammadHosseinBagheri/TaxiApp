@@ -1,17 +1,34 @@
 import React, {Component} from 'react';
-import {View, Text, Image,StatusBar} from 'react-native';
+import {View, Text, Image, StatusBar} from 'react-native';
 import {Icon, Item, Input, Button} from 'native-base';
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      _phoneNuber: '',
+      _phoneNumberErr:false,
+    };
   }
-
+  Login() {
+    if(this.state._phoneNuber==""){
+      this.setState({
+        _phoneNumberErr:true
+      })
+      return
+    }
+    this.props.navigation.replace('Home');
+  }
+  setPhoneNumber(text) {
+    this.setState({
+      _phoneNuber: text,
+      _phoneNumberErr:false
+    });
+  }
   render() {
     return (
       <View>
-      <StatusBar hidden />
+        <StatusBar hidden />
         <View
           style={{
             flexDirection: 'column',
@@ -25,23 +42,26 @@ class Login extends Component {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Text style={{marginRight: 5}}>ورود با استفاده از شماره همراه</Text>
+            <Text style={{marginRight: 5,fontFamily:'IRANSansMobile_Bold',fontSize:16,color:'#00C853'}}>ورود با استفاده از شماره همراه</Text>
             <Icon name="log-in" />
           </View>
-          <Item style={{margin: 10}}>
-            <Input keyboardType={'number-pad'} placeholder={'شماره موبایل'} />
-            <Icon name={'call'} />
+          <Item style={{margin: 10  ,borderBottomWidth:0}} >
+            <Input style={{fontFamily:'IRANSansMobile'}} keyboardType={'number-pad'} placeholder={'شماره موبایل'} onChangeText={this.setPhoneNumber.bind(this)} underlineColorAndroid={(this.state._phoneNuber=='')?'red':'green'} />
+            <Icon name={'call'} style={{color:(this.state._phoneNuber=='')?'red':'green'}} />
           </Item>
+          {
+            this.state._phoneNumberErr==false?null:(<Text style={{fontFamily:'IRANSansMobile_Light',color:'#f44336'}}>شماره موبایل درست نیست</Text>)
+          }
           <Button
             style={{
               width: 100,
               margin: 10,
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor:'#81C784'
+              backgroundColor: '#81C784',
             }}
-            onPress={() => this.props.navigation.replace('Home')}>
-            <Text>ورود</Text>
+            onPress={this.Login.bind(this)}>
+            <Text style={{fontFamily:'IRANSansMobile_Medium',color:'white'}} >ورود</Text>
           </Button>
           <View
             style={{
@@ -49,12 +69,12 @@ class Login extends Component {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Text>عضو نیستید؟</Text>
+            <Text style={{fontFamily:'IRANSansMobile_Medium',color:'black',fontSize:13}} >عضو نیستید؟</Text>
             <Button
               style={{marginLeft: 5}}
               transparent
               onPress={() => this.props.navigation.navigate('Register')}>
-              <Text style={{color: 'tomato'}}>ثبت نام کنید</Text>
+              <Text style={{fontFamily:'IRANSansMobile_Bold',color:'tomato',fontSize:16}}>ثبت نام کنید</Text>
             </Button>
           </View>
         </View>
