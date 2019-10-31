@@ -15,6 +15,7 @@ import {convertDistance} from 'geolib';
 import MyHeader from '../../components/myheader/MyHeader';
 import {Icon, Button} from 'native-base';
 import HomeModal from '../../components/homeModalBox/HomeModal';
+import io from 'socket.io-client'
 
 const {width, height} = Dimensions.get('window');
 
@@ -53,6 +54,12 @@ class DefaultMarkers extends React.Component {
   }
   openModal() {
     this.refs.myModal.modalOpen();
+  }
+  getTaxi(){
+    this.socket.emit('getTaxi',{'lat':this.state.latitude,'lgn':this.state.longitude,'money':this.state.money});
+  }
+  componentWillMount(){
+    this.socket=io('http://192.168.1.52:3000');
   }
   componentDidMount() {
     Geolocation.getCurrentPosition(
@@ -199,7 +206,8 @@ class DefaultMarkers extends React.Component {
                 margin: 15,
                 borderRadius: 15,
                 elevation: 10,
-              }}>
+              }}
+              onPress={this.getTaxi.bind(this)}>
               <Text>درخواست سرویس</Text>
             </Button>
           </View>
